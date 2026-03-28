@@ -1,0 +1,17 @@
+# Claude
+.claude
+
+# IDE
+.idea/
+.vscode/
+
+# ENV
+.env
+
+# Node
+node_modules/
+
+# Playwright artifacts
+apps/ui-tests/traces
+apps/ui-tests/fixtures/cookieState.json
+apps/ui-tests/reports
