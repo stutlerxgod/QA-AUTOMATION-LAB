@@ -8,7 +8,7 @@ Feature: Download Invoice after Purchase Order
     When I click on Cart
     Then I should be on the cart page
     When I click Proceed To Checkout
-    And I click Login button
+    And I click on cart login button
     Then I should see New User Signup
     When I register a new user with name and email
     Then I should see ENTER ACCOUNT INFORMATION

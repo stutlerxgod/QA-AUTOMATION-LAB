@@ -1,4 +1,3 @@
-@only
 Feature: Place Order - Register while Checkout
 
   Scenario: User registers during checkout and places an order

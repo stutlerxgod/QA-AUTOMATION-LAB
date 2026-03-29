@@ -6,8 +6,8 @@ module.exports = {
       'apps/ui-tests/steps/**/*.ts',
     ],
     paths: ['apps/ui-tests/features/**/*.feature'],
-    format: ['progress-bar', 'html:apps/ui-tests/reports/cucumber/cucumber-report.html'],
-    parallel: 1,
+    format: ['progress', 'html:apps/ui-tests/reports/cucumber/cucumber-report.html'],
+    parallel: 4,
     worldParameters: {
       headless: true,
       slowMo: 0,
