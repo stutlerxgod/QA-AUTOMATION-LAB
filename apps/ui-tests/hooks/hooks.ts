@@ -1,7 +1,7 @@
 import * as path from 'path'
 import * as dotenv from 'dotenv'
 import { Before, After, setDefaultTimeout } from '@cucumber/cucumber'
-import { chromium } from '@playwright/test'
+import { chromium, Route } from '@playwright/test'
 
 dotenv.config({ path: '.env' })
 setDefaultTimeout(60000)
@@ -18,6 +18,8 @@ Before(async function () {
 
     await this.context.tracing.start({ screenshots: true, snapshots: true })
     this.page = await this.context.newPage()
+    await this.page.route('**doubleclick.net/**', (route: Route) => route.abort())
+    await this.page.route('**googlesyndication.com/**', (route: Route) => route.abort())
 })
 
 After(async function (scenario) {
