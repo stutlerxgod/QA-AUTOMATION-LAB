@@ -1,0 +1,13 @@
+**/node_modules
+.git
+.env
+*.log
+npm-debug.log*
+*.md
+.DS_Store
+.vscode
+.github
+apps/ui-tests/reports
+apps/ui-tests/traces
+apps/ui-tests/fixtures/cookieState.json
+apps/api-tests/reports

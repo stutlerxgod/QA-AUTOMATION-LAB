@@ -1,0 +1,14 @@
+services:
+  ui-tests:
+    build: .
+    image: qa-automation-lab-ui
+    env_file: .env
+    volumes:
+      - ./apps/ui-tests/reports:/app/apps/ui-tests/reports
+    command: sh -c "npm run setup:cookie && npm run test:ui"
+
+  api-tests:
+    image: postman/newman
+    volumes:
+      - ./apps/api-tests:/etc/newman
+    command: run collections/api.collection.json --environment environments/prod.env.json

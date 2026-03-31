@@ -9,7 +9,10 @@
     "test:ui-tracing": "npx playwright show-trace",
     "setup:cookie": "ts-node apps/ui-tests/utils/cookieSetup.ts",
     "test:api": "newman run apps/api-tests/collections/api.collection.json --environment apps/api-tests/environments/prod.env.json",
-    "test:api:report": "newman run apps/api-tests/collections/api.collection.json --environment apps/api-tests/environments/prod.env.json --reporters cli,htmlextra --reporter-htmlextra-export apps/api-tests/reports/report.html"
+    "test:api:report": "newman run apps/api-tests/collections/api.collection.json --environment apps/api-tests/environments/prod.env.json --reporters cli,htmlextra --reporter-htmlextra-export apps/api-tests/reports/report.html",
+    "docker:build": "docker compose build",
+    "docker:test:ui": "docker compose run --rm ui-tests",
+    "docker:test:api": "docker compose run --rm api-tests"
   },
   "type": "commonjs",
   "devDependencies": {
