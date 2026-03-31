@@ -1,0 +1,46 @@
+name: CI
+
+on:
+  push:
+    branches: [main]
+  pull_request:
+    branches: [main]
+
+jobs:
+  ui-tests:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Create .env file
+        run: |
+          echo "BASE_URL=${{ secrets.BASE_URL }}" >> .env
+          echo "DEFAULT_PASSWORD=${{ secrets.DEFAULT_PASSWORD }}" >> .env
+
+      - name: Build Docker image
+        run: docker compose build
+
+      - name: Run UI tests
+        run: docker compose run --rm ui-tests
+
+      - name: Upload UI test report
+        uses: actions/upload-artifact@v4
+        if: always()
+        with:
+          name: ui-test-report
+          path: apps/ui-tests/reports/
+
+  api-tests:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Run API tests
+        run: docker compose run --rm api-tests
+
+      - name: Upload API test report
+        uses: actions/upload-artifact@v4
+        if: always()
+        with:
+          name: api-test-report
+          path: apps/api-tests/reports/
