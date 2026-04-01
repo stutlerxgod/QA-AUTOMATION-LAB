@@ -35,6 +35,14 @@ jobs:
     steps:
       - uses: actions/checkout@v4
 
+      - name: Create API environment file
+        run: |
+          sed -e "s/YOUR_BASE_URL/${{ secrets.API_BASE_URL }}/" \
+              -e "s/YOUR_EMAIL/${{ secrets.API_EMAIL }}/" \
+              -e "s/YOUR_PASSWORD/${{ secrets.API_PASSWORD }}/" \
+              apps/api-tests/environments/prod.env.json.example \
+              > apps/api-tests/environments/prod.env.json
+
       - name: Run API tests
         run: >
           docker compose run --rm api-tests

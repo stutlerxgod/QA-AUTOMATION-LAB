@@ -18,6 +18,9 @@ apps/ui-tests/fixtures/cookieState.json
 apps/ui-tests/reports/*
 !apps/ui-tests/reports/.gitkeep
 
+# Newman environment
+apps/api-tests/environments/prod.env.json
+
 # Newman reports
 apps/api-tests/reports/*
 !apps/api-tests/reports/.gitkeep
