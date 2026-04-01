@@ -11,4 +11,4 @@ services:
     image: postman/newman
     volumes:
       - ./apps/api-tests:/etc/newman
-    command: run collections/api.collection.json --environment environments/prod.env.json
+    command: run collections/api.collection.json --environment environments/prod.env.json --reporters cli,htmlextra --reporter-htmlextra-export reports/report.html
