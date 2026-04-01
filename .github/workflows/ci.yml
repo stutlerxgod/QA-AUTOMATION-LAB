@@ -28,7 +28,7 @@ jobs:
         if: always()
         with:
           name: ui-test-report
-          path: apps/ui-tests/reports/
+          path: apps/ui-tests/reports/cucumber-report.html
 
   api-tests:
     runs-on: ubuntu-latest
@@ -36,11 +36,16 @@ jobs:
       - uses: actions/checkout@v4
 
       - name: Run API tests
-        run: docker compose run --rm api-tests
+        run: >
+          docker compose run --rm api-tests
+          run collections/api.collection.json
+          --environment environments/prod.env.json
+          --reporters cli,junit
+          --reporter-junit-export reports/report.xml
 
       - name: Upload API test report
         uses: actions/upload-artifact@v4
         if: always()
         with:
           name: api-test-report
-          path: apps/api-tests/reports/
+          path: apps/api-tests/reports/report.xml
