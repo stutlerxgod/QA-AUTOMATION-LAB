@@ -37,9 +37,9 @@ jobs:
 
       - name: Create API environment file
         run: |
-          sed -e "s/YOUR_BASE_URL/${{ secrets.API_BASE_URL }}/" \
-              -e "s/YOUR_EMAIL/${{ secrets.API_EMAIL }}/" \
-              -e "s/YOUR_PASSWORD/${{ secrets.API_PASSWORD }}/" \
+          sed -e "s|YOUR_BASE_URL|${{ secrets.API_BASE_URL }}|" \
+              -e "s|YOUR_EMAIL|${{ secrets.API_EMAIL }}|" \
+              -e "s|YOUR_PASSWORD|${{ secrets.API_PASSWORD }}|" \
               apps/api-tests/environments/prod.env.json.example \
               > apps/api-tests/environments/prod.env.json
 
