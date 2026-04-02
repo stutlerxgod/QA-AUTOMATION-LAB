@@ -24,6 +24,6 @@ When('I add the first recommended item to cart', async function (this: CustomWor
 
 Then('the recommended product should be displayed in cart', async function (this: CustomWorld) {
     await expect(this.page.locator('#cart_info_table tbody tr').first()).toBeVisible({ timeout: 10000 })
-    await expect(this.page.locator('#cart_info_table tbody tr').first()).toContainText(this.recommendedProductName)
+    await expect(this.page.locator('#cart_info_table tbody tr').first()).toContainText(this.recommendedProductName!)
 
 })
