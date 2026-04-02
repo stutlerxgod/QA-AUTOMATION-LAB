@@ -12,7 +12,7 @@ When('I download the invoice', async function (this: CustomWorld) {
 
 Then('the invoice should be downloaded successfully', async function (this: CustomWorld) {
     expect(this.download).toBeTruthy()
-    expect(this.download.suggestedFilename()).toBeTruthy()
+    expect(this.download!.suggestedFilename()).toBeTruthy()
 })
 
 When('I click Continue after order', async function (this: CustomWorld) {
