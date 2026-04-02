@@ -1,35 +1,35 @@
-import { Given, When, Then } from '@cucumber/cucumber'
+import { When, Then } from '@cucumber/cucumber'
 import { expect } from '@playwright/test'
 import { TEST_USER } from '../fixtures/testData'
+import type { CustomWorld } from '../hooks/world'
 
 export function getUniqueEmail() {
     const stamp = Date.now()
     return `testuser+${stamp}@example.com`
 }
 
-When('I click on Signup', async function () {
+When('I click on Signup', async function (this: CustomWorld) {
     await this.page.click('a[href="/login"]')
 })
 
-Then('I should see New User Signup', async function () {
+Then('I should see New User Signup', async function (this: CustomWorld) {
     await expect(this.page.locator('h2:has-text("New User Signup!")')).toBeVisible({ timeout: 10000 })
 })
 
-When('I register a new user with name and email', async function () {
+When('I register a new user with name and email', async function (this: CustomWorld) {
     const email = getUniqueEmail()
     await this.page.fill('input[data-qa="signup-name"]', TEST_USER.name)
     await this.page.fill('input[data-qa="signup-email"]', email)
     await this.page.click('button[data-qa="signup-button"]')
-    this.registeredEmail = email
 })
 
-Then('I should see ENTER ACCOUNT INFORMATION', async function () {
+Then('I should see ENTER ACCOUNT INFORMATION', async function (this: CustomWorld) {
     await expect(this.page.locator('b:has-text("Enter Account Information")')).toBeVisible({ timeout: 10000 })
 })
 
-When('I fill account information and address details', async function () {
+When('I fill account information and address details', async function (this: CustomWorld) {
     await this.page.check('#id_gender1')
-    await this.page.fill('#password', process.env.DEFAULT_PASSWORD)
+    await this.page.fill('#password', process.env.DEFAULT_PASSWORD!)
     await this.page.selectOption('#days', { value: '10' })
     await this.page.selectOption('#months', { value: '5' })
     await this.page.selectOption('#years', { value: '1990' })
@@ -45,28 +45,28 @@ When('I fill account information and address details', async function () {
     await this.page.fill('#mobile_number', TEST_USER.phone)
 })
 
-When('I create the account', async function () {
+When('I create the account', async function (this: CustomWorld) {
     await this.page.click('button[data-qa="create-account"]')
 })
 
-Then('I should see ACCOUNT CREATED', async function () {
+Then('I should see ACCOUNT CREATED', async function (this: CustomWorld) {
     await expect(this.page.locator('h2:has-text("Account Created!")')).toBeVisible({ timeout: 20000 })
 })
 
-When('I continue after account creation', async function () {
+When('I continue after account creation', async function (this: CustomWorld) {
     await this.page.click('a[data-qa="continue-button"]')
     await expect(this.page.locator('a:has-text("Logged in as")')).toBeVisible({ timeout: 15000 })
 })
 
-Then('I should see Logged in as username', async function () {
+Then('I should see Logged in as username', async function (this: CustomWorld) {
     await expect(this.page.locator('a:has-text("Logged in as")')).toBeVisible()
 })
 
-When('I delete the account', async function () {
+When('I delete the account', async function (this: CustomWorld) {
     await this.page.click('a[href="/delete_account"]')
 })
 
-Then('I should see ACCOUNT DELETED and continue', async function () {
+Then('I should see ACCOUNT DELETED and continue', async function (this: CustomWorld) {
     await expect(this.page.locator('h2:has-text("Account Deleted!")')).toBeVisible({ timeout: 15000 })
     await this.page.click('a[data-qa="continue-button"]')
 })

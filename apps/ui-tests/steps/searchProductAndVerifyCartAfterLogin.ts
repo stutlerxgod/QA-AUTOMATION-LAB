@@ -1,7 +1,8 @@
 import { When, Then } from '@cucumber/cucumber'
 import { expect } from '@playwright/test'
+import type { CustomWorld } from '../hooks/world'
 
-When('I add all searched products to cart', async function () {
+When('I add all searched products to cart', async function (this: CustomWorld) {
     const products = this.page.locator('.features_items .product-image-wrapper')
     const productsCont = 3
 
@@ -19,7 +20,7 @@ When('I add all searched products to cart', async function () {
     }
 })
 
-Then('the cart should contain the searched products', async function () {
+Then('the cart should contain the searched products', async function (this: CustomWorld) {
     const rows = this.page.locator('#cart_info_table tbody tr')
     const count = await rows.count()
     expect(count).toBeGreaterThan(0)

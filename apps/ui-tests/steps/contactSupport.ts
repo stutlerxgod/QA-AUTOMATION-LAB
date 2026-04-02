@@ -2,6 +2,7 @@ import * as path from 'path'
 import { When, Then } from '@cucumber/cucumber'
 import { expect, Dialog } from '@playwright/test'
 import { TEST_DATA, TEST_USER } from '../fixtures/testData'
+import type { CustomWorld } from '../hooks/world'
 
 const UPLOAD_FILE = path.join(__dirname, '../fixtures/testFile.txt')
 

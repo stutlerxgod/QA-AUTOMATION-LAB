@@ -2,8 +2,9 @@ import { Given, When } from '@cucumber/cucumber'
 import { request } from '@playwright/test'
 import { TEST_USER } from '../fixtures/testData'
 import { getUniqueEmail } from './registerUser'
+import type { CustomWorld } from '../hooks/world'
 
-Given('I have a registered account', async function () {
+Given('I have a registered account', async function (this: CustomWorld) {
     const email = getUniqueEmail()
     const password = process.env.DEFAULT_PASSWORD!
 
@@ -35,7 +36,7 @@ Given('I have a registered account', async function () {
     this.loginPassword = password
 })
 
-When('I enter correct email and password', async function () {
+When('I enter correct email and password', async function (this: CustomWorld) {
     await this.page.fill('input[data-qa="login-email"]', this.loginEmail)
     await this.page.fill('input[data-qa="login-password"]', this.loginPassword)
 })

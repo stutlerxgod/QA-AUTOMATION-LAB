@@ -1,5 +1,6 @@
 import * as path from 'path'
 import * as dotenv from 'dotenv'
+import { CustomWorld } from './world'
 import { Before, After, setDefaultTimeout } from '@cucumber/cucumber'
 import { chromium, Route } from '@playwright/test'
 
@@ -7,7 +8,7 @@ dotenv.config({ path: '.env' })
 setDefaultTimeout(60000)
 const STORAGE_STATE = path.join(__dirname, '../fixtures/cookieState.json')
 
-Before(async function () {
+Before(async function (this: CustomWorld) {
     const { headless, slowMo } = this.parameters
     this.browser = await chromium.launch({ headless, slowMo})
 
@@ -22,7 +23,7 @@ Before(async function () {
     await this.page.route('**googlesyndication.com/**', (route: Route) => route.abort())
 })
 
-After(async function (scenario) {
+After(async function (this: CustomWorld, scenario) {
     const name = scenario.pickle.name.replace(/\s+/g, '_')
     await this.context.tracing.stop({ path: `apps/ui-tests/traces/${name}.zip` })
 

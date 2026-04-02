@@ -1,6 +1,7 @@
 import { When, Then } from '@cucumber/cucumber'
 import { expect } from '@playwright/test'
 import { getUniqueEmail } from './registerUser'
+import type { CustomWorld } from '../hooks/world'
 
 When('I scroll down to the footer', async function () {
     await this.page.locator('footer').scrollIntoViewIfNeeded()
