@@ -1,5 +1,6 @@
 import { When, Then } from '@cucumber/cucumber'
 import { expect } from '@playwright/test'
+import { getUniqueEmail } from './registerUser'
 
 When('I scroll down to the footer', async function () {
     await this.page.locator('footer').scrollIntoViewIfNeeded()
@@ -10,7 +11,7 @@ Then('I should see SUBSCRIPTION', async function () {
 })
 
 When('I enter email and click the subscribe button', async function () {
-    const email = `subscriber+${Date.now()}@example.com`
+    const email = getUniqueEmail()
     await this.page.fill('input#susbscribe_email', email)
     await this.page.click('button#subscribe')
 })

@@ -2,7 +2,7 @@ import { Given, When, Then } from '@cucumber/cucumber'
 import { expect } from '@playwright/test'
 import { TEST_USER } from '../fixtures/testData'
 
-function getUniqueEmail() {
+export function getUniqueEmail() {
     const stamp = Date.now()
     return `testuser+${stamp}@example.com`
 }

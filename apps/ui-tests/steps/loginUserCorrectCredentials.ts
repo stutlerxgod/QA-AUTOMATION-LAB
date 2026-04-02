@@ -1,9 +1,10 @@
 import { Given, When } from '@cucumber/cucumber'
 import { request } from '@playwright/test'
 import { TEST_USER } from '../fixtures/testData'
+import { getUniqueEmail } from './registerUser'
 
 Given('I have a registered account', async function () {
-    const email = `testuser+${Date.now()}@example.com`
+    const email = getUniqueEmail()
     const password = process.env.DEFAULT_PASSWORD!
 
     const apiContext = await request.newContext()
