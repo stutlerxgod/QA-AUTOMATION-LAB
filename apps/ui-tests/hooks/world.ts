@@ -6,6 +6,8 @@ export class CustomWorld extends World {
     context!: BrowserContext
     page!: Page
     download?: Download
+    product1Price?: string
+    product2Price?: string
     loginEmail?: string
     loginPassword?: string
     recommendedProductName?: string | null
