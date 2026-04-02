@@ -1,8 +1,10 @@
 Feature: View Category Products
 
-  Scenario: User views products by category
+  Background:
     Given I launch the Automation Exercise site
     Then I should see the home page
+
+  Scenario: User views products by category
     Then I should see categories in the left sidebar
     When I click on Women category
     And I click on a dress subcategory under Women

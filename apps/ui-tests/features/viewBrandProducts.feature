@@ -1,8 +1,10 @@
 Feature: View & Cart Brand Products
 
-  Scenario: User views products by brand
+  Background:
     Given I launch the Automation Exercise site
     Then I should see the home page
+
+  Scenario: User views products by brand
     When I click on the Products button
     Then I should see brands in the left sidebar
     When I click on the first brand

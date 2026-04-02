@@ -1,8 +1,10 @@
 Feature: Verify Product Quantity in Cart
 
-  Scenario: User sets product quantity and verifies it in cart
+  Background:
     Given I launch the Automation Exercise site
     Then I should see the home page
+
+  Scenario: User sets product quantity and verifies it in cart
     When I click View Product for any product
     Then I should be on the product detail page
     When I set the product quantity to 4

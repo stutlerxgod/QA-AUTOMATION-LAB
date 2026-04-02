@@ -1,8 +1,10 @@
 Feature: Place Order - Login before Checkout
 
-  Scenario: User logs in before checkout and places an order
+  Background:
     Given I launch the Automation Exercise site
     Then I should see the home page
+
+  Scenario: User logs in before checkout and places an order
     Given I have a registered account
     When I click on Login
     Then I should see Login to your account

@@ -1,8 +1,10 @@
 Feature: Add to Cart from Recommended Items
 
-  Scenario: User adds a recommended item to cart from the home page
+  Background:
     Given I launch the Automation Exercise site
     Then I should see the home page
+
+  Scenario: User adds a recommended item to cart from the home page
     When I scroll to the bottom of the page
     Then I should see RECOMMENDED ITEMS
     When I add the first recommended item to cart

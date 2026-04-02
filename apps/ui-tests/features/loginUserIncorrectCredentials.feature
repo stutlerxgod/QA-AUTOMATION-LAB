@@ -1,8 +1,10 @@
 Feature: Login User with Incorrect Credentials
 
-  Scenario: Login with incorrect email and password shows error message
+  Background:
     Given I launch the Automation Exercise site
     Then I should see the home page
+
+  Scenario: Login with incorrect email and password shows error message
     When I click on Login
     Then I should see Login to your account
     When I enter incorrect email and password

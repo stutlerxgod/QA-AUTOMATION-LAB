@@ -1,8 +1,10 @@
 Feature: Add Review on Product
 
-  Scenario: User adds a review on a product
+  Background:
     Given I launch the Automation Exercise site
     Then I should see the home page
+
+  Scenario: User adds a review on a product
     When I click on Products
     Then I should be on the all products page
     When I click View Product of the first product

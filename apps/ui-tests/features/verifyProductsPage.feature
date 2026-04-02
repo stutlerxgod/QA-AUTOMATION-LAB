@@ -1,8 +1,10 @@
 Feature: Verify All Products and Product Detail Page
 
-  Scenario: User views product list and product detail page
+  Background:
     Given I launch the Automation Exercise site
     Then I should see the home page
+
+  Scenario: User views product list and product detail page
     When I click on Products
     Then I should be on the all products page
     And the products list should be visible

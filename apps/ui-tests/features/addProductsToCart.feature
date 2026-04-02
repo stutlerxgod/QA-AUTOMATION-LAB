@@ -1,8 +1,10 @@
 Feature: Add Products in Cart
 
-  Scenario: User adds two products to cart and verifies cart details
+  Background:
     Given I launch the Automation Exercise site
     Then I should see the home page
+
+  Scenario: User adds two products to cart and verifies cart details
     When I click on Products
     When I hover over the first product and add it to cart
     And I click Continue Shopping

@@ -1,8 +1,10 @@
 Feature: Search Products and Verify Cart After Login
 
-  Scenario: User searches products, adds to cart and verifies cart persists after login
+  Background:
     Given I launch the Automation Exercise site
     Then I should see the home page
+
+  Scenario: User searches products, adds to cart and verifies cart persists after login
     When I click on Products
     Then I should be on the all products page
     When I search for a product

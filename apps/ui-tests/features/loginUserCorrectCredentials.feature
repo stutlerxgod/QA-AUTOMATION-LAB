@@ -1,8 +1,10 @@
 Feature: Login User with Correct Credentials
 
-  Scenario: Login with correct email and password
+  Background:
     Given I launch the Automation Exercise site
     Then I should see the home page
+
+  Scenario: Login with correct email and password
     Given I have a registered account
     When I click on Login
     Then I should see Login to your account

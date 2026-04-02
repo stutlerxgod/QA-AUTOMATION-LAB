@@ -1,8 +1,10 @@
 Feature: Verify Address Details in Checkout Page
 
-  Scenario: User verifies delivery and billing address match registration details
+  Background:
     Given I launch the Automation Exercise site
     Then I should see the home page
+
+  Scenario: User verifies delivery and billing address match registration details
     When I click on Signup
     Then I should see New User Signup
     When I register a new user with name and email

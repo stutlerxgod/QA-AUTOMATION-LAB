@@ -1,8 +1,10 @@
 Feature: Logout User
 
-  Scenario: Logout user navigates to login page
+  Background:
     Given I launch the Automation Exercise site
     Then I should see the home page
+
+  Scenario: Logout user navigates to login page
     Given I have a registered account
     When I click on Login
     Then I should see Login to your account

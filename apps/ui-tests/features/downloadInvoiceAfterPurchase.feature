@@ -1,8 +1,10 @@
 Feature: Download Invoice after Purchase Order
 
-  Scenario: User places an order and downloads the invoice
+  Background:
     Given I launch the Automation Exercise site
     Then I should see the home page
+
+  Scenario: User places an order and downloads the invoice
     When I hover over the first product and add it to cart
     And I click Continue Shopping
     When I click on Cart

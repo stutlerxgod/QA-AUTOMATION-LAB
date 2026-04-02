@@ -1,8 +1,10 @@
 Feature: Register User
 
-  Scenario: Register a new user and delete the account successfully
+  Background:
     Given I launch the Automation Exercise site
     Then I should see the home page
+
+  Scenario: Register a new user and delete the account successfully
     When I click on Signup
     Then I should see New User Signup
     When I register a new user with name and email

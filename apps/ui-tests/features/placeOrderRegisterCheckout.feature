@@ -1,8 +1,10 @@
 Feature: Place Order - Register while Checkout
 
-  Scenario: User registers during checkout and places an order
+  Background:
     Given I launch the Automation Exercise site
     Then I should see the home page
+
+  Scenario: User registers during checkout and places an order
     When I hover over the first product and add it to cart
     And I click Continue Shopping
     When I click on Cart

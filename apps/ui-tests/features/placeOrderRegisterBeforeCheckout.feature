@@ -1,8 +1,10 @@
 Feature: Place Order - Register before Checkout
 
-  Scenario: User registers before checkout and places an order
+  Background:
     Given I launch the Automation Exercise site
     Then I should see the home page
+
+  Scenario: User registers before checkout and places an order
     When I click on Signup
     Then I should see New User Signup
     When I register a new user with name and email
