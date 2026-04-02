@@ -8,7 +8,7 @@ async function saveCookieState() {
     const context = await browser.newContext()
     const page = await context.newPage()
 
-    await page.goto('https://automationexercise.com/')
+    await page.goto(process.env.BASE_URL!)
     const consentBtn = page.locator('.fc-cta-consent')
     if (await consentBtn.isVisible({ timeout: 10000 }).catch(() => false)) {
         await consentBtn.click()
