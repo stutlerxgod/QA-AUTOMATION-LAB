@@ -4,15 +4,15 @@ import type { CustomWorld } from '../hooks/world'
 
 When('I add all searched products to cart', async function (this: CustomWorld) {
     const products = this.page.locator('.features_items .product-image-wrapper')
-    const productsCont = 3
+    const productsCount = 3
 
-    for (let i = 0; i < productsCont; i++) {
+    for (let i = 0; i < productsCount; i++) {
         const product = products.nth(i)
         await product.hover()
         const overlay = this.page.locator('.product-overlay').nth(i)
         await expect(overlay).toBeVisible({ timeout: 10000 })
         await overlay.locator('.fa-shopping-cart').click()
-        if (i < productsCont - 1) {
+        if (i < productsCount - 1) {
             await this.page.click('button.close-modal')
         } else {
             await this.page.locator('.modal-body a:has-text("View Cart")').click()
