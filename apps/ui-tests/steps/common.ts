@@ -8,5 +8,5 @@ Given('I launch the Automation Exercise site', async function (this: CustomWorld
 
 Then('I should see the home page', async function (this: CustomWorld) {
     await expect(this.page).toHaveURL(`${process.env.BASE_URL}`)
-    await expect(this.page.locator('img[alt="Website for automation practice"]')).toBeVisible({ timeout: 10000 })
+    await expect(this.home.logo).toBeVisible({ timeout: 10000 })
 })

@@ -9,6 +9,6 @@
     "esModuleInterop": true,
     "types": ["@playwright/test", "node"]
   },
-  "include": ["**/*.ts"],
+  "include": ["apps/**/*.ts"],
   "exclude": ["node_modules"]
 }

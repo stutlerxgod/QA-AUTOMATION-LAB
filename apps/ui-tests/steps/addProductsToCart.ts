@@ -25,17 +25,16 @@ When('I hover over the second product and add it to cart', async function (this:
 })
 
 When('I click View Cart', async function (this: CustomWorld) {
-    await this.page.locator('.modal-body a:has-text("View Cart")').click()
+    await this.cart.viewCart.click()
 })
 
 Then('both products should be in the cart', async function (this: CustomWorld) {
-    const rows = this.page.locator('#cart_info_table tbody tr')
-    await expect(rows).toHaveCount(2)
+    await expect(this.cart.cartItems).toHaveCount(2)
 })
 
 Then('the cart should show correct prices, quantity and total', async function (this: CustomWorld) {
-    const product1 = this.page.locator('#cart_info_table tbody tr').nth(0)
-    const product2 = this.page.locator('#cart_info_table tbody tr').nth(1)
+    const product1 = this.cart.cartItems.nth(0)
+    const product2 = this.cart.cartItems.nth(1)
     await expect(product1.locator('.cart_price p')).toContainText(this.product1Price!)
     await expect(product1.locator('.cart_quantity')).toContainText('1')
     await expect(product1.locator('.cart_total p')).toContainText(this.product1Price!)

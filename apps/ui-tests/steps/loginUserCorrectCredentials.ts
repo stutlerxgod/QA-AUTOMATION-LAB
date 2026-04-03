@@ -37,6 +37,6 @@ Given('I have a registered account', async function (this: CustomWorld) {
 })
 
 When('I enter correct email and password', async function (this: CustomWorld) {
-    await this.page.fill('input[data-qa="login-email"]', this.loginEmail!)
-    await this.page.fill('input[data-qa="login-password"]', this.loginPassword!)
+    await this.loginPage.loginEmailInput.fill(this.loginEmail!)
+    await this.loginPage.loginPasswordInput.fill(this.loginPassword!)
 })

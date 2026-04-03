@@ -15,6 +15,5 @@ When('I add the product to cart', async function (this: CustomWorld) {
 })
 
 Then('the product should be in the cart with quantity 4', async function (this: CustomWorld) {
-    const row = this.page.locator('#cart_info_table tbody tr').first()
-    await expect(row.locator('.cart_quantity button')).toContainText('4')
+    await expect(this.cart.cartItems.first().locator('.cart_quantity button')).toContainText('4')
 })

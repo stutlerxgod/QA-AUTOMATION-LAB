@@ -3,10 +3,9 @@ import { expect } from '@playwright/test'
 import type { CustomWorld } from '../hooks/world'
 
 When('I remove the first product from the cart', async function (this: CustomWorld) {
-    await this.page.click('#cart_info_table tbody tr:first-child a.cart_quantity_delete')
+    await this.cart.cartItems.first().locator('a.cart_quantity_delete').click()
 })
 
 Then('the product should be removed from the cart', async function (this: CustomWorld) {
-    const rows = this.page.locator('#cart_info_table tbody tr')
-    await expect(rows).toHaveCount(0)
+    await expect(this.cart.cartItems).toHaveCount(0)
 })

@@ -4,7 +4,7 @@ import { PAYMENT } from '../fixtures/testData'
 import type { CustomWorld } from '../hooks/world'
 
 When('I click Proceed To Checkout', async function (this: CustomWorld) {
-    await this.page.click('a:has-text("Proceed To Checkout")')
+    await this.cart.proceedToCheckoutButton.click()
 })
 
 When('I click on cart login button', async function (this: CustomWorld) {

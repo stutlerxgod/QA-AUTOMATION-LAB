@@ -3,7 +3,7 @@ import { expect } from '@playwright/test'
 import type { CustomWorld } from '../hooks/world'
 
 When('I click on Cart', async function (this: CustomWorld) {
-    await this.page.click('a[href="/view_cart"]')
+    await this.home.cartLink.click()
 })
 
 Then('I should be on the cart page', async function (this: CustomWorld) {

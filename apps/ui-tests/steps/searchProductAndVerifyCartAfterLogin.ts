@@ -12,17 +12,12 @@ When('I add all searched products to cart', async function (this: CustomWorld) {
         const overlay = this.page.locator('.product-overlay').nth(i)
         await expect(overlay).toBeVisible({ timeout: 10000 })
         await overlay.locator('.fa-shopping-cart').click()
-        if (i < productsCount - 1) {
-            await this.page.click('button.close-modal')
-        } else {
-            await this.page.locator('.modal-body a:has-text("View Cart")').click()
-        }
+        await this.page.click('button.close-modal')
     }
 })
 
 Then('the cart should contain the searched products', async function (this: CustomWorld) {
-    const rows = this.page.locator('#cart_info_table tbody tr')
-    const count = await rows.count()
+    const count = await this.cart.cartItems.count()
     expect(count).toBeGreaterThan(0)
-    await expect(rows.first()).toBeVisible({ timeout: 10000 })
+    await expect(this.cart.cartItems.first()).toBeVisible({ timeout: 10000 })
 })
