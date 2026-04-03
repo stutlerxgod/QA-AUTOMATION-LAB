@@ -1,5 +1,7 @@
 # QA Automation Lab
 
+[![CI](https://github.com/stutlerxgod/QA-AUTOMATION-LAB/actions/workflows/ci.yml/badge.svg)](https://github.com/stutlerxgod/QA-AUTOMATION-LAB/actions/workflows/ci.yml)
+
 End-to-end test automation suite for [automationexercise.com](https://automationexercise.com) — a practice e-commerce platform.
 
 ## Stack
@@ -9,8 +11,10 @@ End-to-end test automation suite for [automationexercise.com](https://automation
 | UI Tests | Playwright + Cucumber.js (BDD) |
 | API Tests | Postman + Newman |
 | Language | TypeScript |
+| Architecture | Page Object Model |
 | Containerization | Docker + Docker Compose |
 | CI/CD | GitHub Actions |
+| Code Quality | Prettier |
 
 ## Project Structure
 ```
@@ -18,7 +22,8 @@ apps/
   ui-tests/
     features/       # Gherkin scenarios
     steps/          # Step definitions
-    hooks/          # Before/After hooks
+    pages/          # Page Object Model classes
+    hooks/          # Before/After hooks, World
     fixtures/       # Test data & cookie state
     utils/          # Cookie setup script
     reports/        # HTML reports (generated)
@@ -91,9 +96,24 @@ npm run docker:test:api
 npm run docker:run
 ```
 
+## Code Formatting
+
+```bash
+# fix formatting
+npm run format
+
+# check formatting (used in CI)
+npm run format:check
+```
+
 ## CI/CD
 
-GitHub Actions runs automatically on every push and pull request to `main`. Reports are uploaded as artifacts after each run.
+GitHub Actions runs automatically on every push and pull request to `main`:
+- **lint** — checks code formatting with Prettier
+- **ui-tests** — runs UI tests in Docker
+- **api-tests** — runs API tests with Newman
+
+Reports are uploaded as artifacts after each run.
 
 ## Reports
 
