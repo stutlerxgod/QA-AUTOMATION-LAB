@@ -1,7 +1,8 @@
 Feature: Search Products and Verify Cart After Login
 
   Background:
-    Given I launch the Automation Exercise site
+    Given I have a registered account
+    And I launch the Automation Exercise site
     Then I should see the home page
 
   Scenario: User searches products, adds to cart and verifies cart persists after login
@@ -16,7 +17,6 @@ Feature: Search Products and Verify Cart After Login
     And the cart should contain the searched products
     When I click on Login
     Then I should see Login to your account
-    Given I have a registered account
     When I enter correct email and password
     And I click the login button
     Then I should see Logged in as username

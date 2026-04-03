@@ -24,8 +24,12 @@ Before(async function (this: CustomWorld) {
 })
 
 After(async function (this: CustomWorld, scenario) {
-    const name = scenario.pickle.name.replace(/\s+/g, '_')
-    await this.context.tracing.stop({ path: `apps/ui-tests/traces/${name}.zip` })
+    if (scenario.result?.status === 'FAILED') {
+        const name = scenario.pickle.name.replace(/\s+/g, '_')
+        await this.context.tracing.stop({ path: `apps/ui-tests/traces/${name}.zip` })
+    } else {
+        await this.context.tracing.stop({})
+    }
 
     await this.page?.close()
     await this.context?.close()

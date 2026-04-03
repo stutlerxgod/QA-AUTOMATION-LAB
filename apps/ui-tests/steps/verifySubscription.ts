@@ -3,21 +3,21 @@ import { expect } from '@playwright/test'
 import { getUniqueEmail } from './registerUser'
 import type { CustomWorld } from '../hooks/world'
 
-When('I scroll down to the footer', async function () {
+When('I scroll down to the footer', async function (this: CustomWorld) {
     await this.page.locator('footer').scrollIntoViewIfNeeded()
 })
 
-Then('I should see SUBSCRIPTION', async function () {
+Then('I should see SUBSCRIPTION', async function (this: CustomWorld) {
     await expect(this.page.locator('footer h2:has-text("Subscription")')).toBeVisible({ timeout: 10000 })
 })
 
-When('I enter email and click the subscribe button', async function () {
+When('I enter email and click the subscribe button', async function (this: CustomWorld) {
     const email = getUniqueEmail()
     await this.page.fill('input#susbscribe_email', email)
     await this.page.click('button#subscribe')
 })
 
-Then('I should see subscription success message {string}', async function (message: string) {
+Then('I should see subscription success message {string}', async function (this: CustomWorld, message: string) {
     await expect(this.page.locator('div#success-subscribe')).toBeVisible({ timeout: 10000 })
     await expect(this.page.locator('div#success-subscribe')).toContainText(message)
 })
