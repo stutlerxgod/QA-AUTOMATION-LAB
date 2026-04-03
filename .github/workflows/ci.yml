@@ -24,6 +24,9 @@ jobs:
       - name: Check formatting
         run: npm run format:check
 
+      - name: Typecheck
+        run: npx tsc --noEmit
+
   ui-tests:
     runs-on: ubuntu-latest
     timeout-minutes: 15
