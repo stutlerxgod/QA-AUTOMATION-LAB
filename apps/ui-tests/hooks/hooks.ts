@@ -10,7 +10,7 @@ const STORAGE_STATE = path.join(__dirname, '../fixtures/cookieState.json')
 
 Before(async function (this: CustomWorld) {
     const { headless, slowMo } = this.parameters
-    this.browser = await chromium.launch({ headless, slowMo})
+    this.browser = await chromium.launch({ headless, slowMo })
 
     this.context = await this.browser.newContext({
         viewport: { width: 1280, height: 720 },

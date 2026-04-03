@@ -3,7 +3,6 @@ import { expect } from '@playwright/test'
 import { INVALID_LOGIN } from '../fixtures/testData'
 import type { CustomWorld } from '../hooks/world'
 
-
 When('I click on Login', async function (this: CustomWorld) {
     await this.home.loginLink.click()
 })

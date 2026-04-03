@@ -15,9 +15,15 @@ export class CustomWorld extends World {
     loginPassword?: string
     recommendedProductName?: string | null
 
-    get home() { return new HomePage(this.page) }
-    get loginPage() { return new LoginPage(this.page) }
-    get cart() { return new CartPage(this.page) }
+    get home() {
+        return new HomePage(this.page)
+    }
+    get loginPage() {
+        return new LoginPage(this.page)
+    }
+    get cart() {
+        return new CartPage(this.page)
+    }
 }
 
 setWorldConstructor(CustomWorld)

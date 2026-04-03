@@ -14,5 +14,4 @@ export class CartPage {
     get proceedToCheckoutButton() {
         return this.page.locator('a:has-text("Proceed To Checkout")')
     }
-
 }

@@ -12,7 +12,9 @@
     "docker:build": "docker compose build",
     "docker:test:ui": "docker compose run --rm ui-tests",
     "docker:test:api": "docker compose run --rm api-tests",
-    "docker:run": "docker compose run --rm ui-tests && docker compose run --rm api-tests"
+    "docker:run": "docker compose run --rm ui-tests && docker compose run --rm api-tests",
+    "format": "prettier --write apps/**/*.ts",
+    "format:check": "prettier --check apps/**/*.ts"
   },
   "type": "commonjs",
   "devDependencies": {
@@ -22,6 +24,7 @@
     "dotenv": "^17.3.1",
     "newman": "^6.2.2",
     "newman-reporter-htmlextra": "^1.23.1",
+    "prettier": "^3.8.1",
     "ts-node": "^10.9.2",
     "typescript": "^6.0.2"
   }
