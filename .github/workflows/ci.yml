@@ -52,6 +52,13 @@ jobs:
           name: ui-test-report
           path: apps/ui-tests/reports/cucumber-report.html
 
+      - name: Upload traces
+        uses: actions/upload-artifact@v4
+        if: failure()
+        with:
+          name: ui-test-traces
+          path: apps/ui-tests/traces/
+
   api-tests:
     needs: lint
     runs-on: ubuntu-latest

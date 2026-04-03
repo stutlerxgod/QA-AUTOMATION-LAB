@@ -5,6 +5,7 @@ services:
     env_file: .env
     volumes:
       - ./apps/ui-tests/reports:/app/apps/ui-tests/reports
+      - ./apps/ui-tests/traces:/app/apps/ui-tests/traces
     command: sh -c "npm run setup:cookie && npm run test:ui"
 
   api-tests:
