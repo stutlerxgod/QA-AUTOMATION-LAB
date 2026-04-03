@@ -2,11 +2,6 @@ import { When, Then } from '@cucumber/cucumber'
 import { expect } from '@playwright/test'
 import type { CustomWorld } from '../hooks/world'
 
-When('I click on the Products button', async function (this: CustomWorld) {
-    await this.page.click('a[href="/products"]')
-    await expect(this.page).toHaveURL(`${process.env.BASE_URL}/products`)
-})
-
 Then('I should see brands in the left sidebar', async function (this: CustomWorld) {
     await expect(this.page.locator('.brands_products')).toBeVisible()
     await expect(this.page.locator('.left-sidebar h2:has-text("Brands")')).toBeVisible()
