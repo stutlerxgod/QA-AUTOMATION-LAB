@@ -28,6 +28,7 @@ jobs:
         run: npx tsc --noEmit
 
   ui-tests:
+    needs: lint
     runs-on: ubuntu-latest
     timeout-minutes: 15
     steps:
@@ -52,6 +53,7 @@ jobs:
           path: apps/ui-tests/reports/cucumber-report.html
 
   api-tests:
+    needs: lint
     runs-on: ubuntu-latest
     timeout-minutes: 10
     steps:
