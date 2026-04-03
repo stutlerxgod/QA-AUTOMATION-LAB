@@ -8,7 +8,7 @@ services:
     command: sh -c "npm run setup:cookie && npm run test:ui"
 
   api-tests:
-    image: postman/newman
+    image: dannydainton/htmlextra
     volumes:
       - ./apps/api-tests:/etc/newman
     command: run collections/api.collection.json --environment environments/prod.env.json --reporters cli,htmlextra --reporter-htmlextra-export reports/report.html

@@ -70,12 +70,12 @@ jobs:
           docker compose run --rm api-tests
           run collections/api.collection.json
           --environment environments/prod.env.json
-          --reporters cli,junit
-          --reporter-junit-export reports/report.xml
+          --reporters cli,htmlextra
+          --reporter-htmlextra-export reports/report.html
 
       - name: Upload API test report
         uses: actions/upload-artifact@v4
         if: always()
         with:
           name: api-test-report
-          path: apps/api-tests/reports/report.xml
+          path: apps/api-tests/reports/report.html
