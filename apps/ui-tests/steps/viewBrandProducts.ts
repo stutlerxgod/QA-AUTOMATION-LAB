@@ -7,24 +7,13 @@ Then('I should see brands in the left sidebar', async function (this: CustomWorl
     await expect(this.page.locator('.left-sidebar h2:has-text("Brands")')).toBeVisible()
 })
 
-When('I click on the first brand', async function (this: CustomWorld) {
-    await this.page.locator('.brands_products ul li').nth(0).click()
+When('I click on the {string} brand', async function (this: CustomWorld, brand: string) {
+    await this.page.locator(`.brands_products ul li:has-text("${brand}")`).click()
 })
 
-Then('I should be on the brand page with products displayed', async function (this: CustomWorld) {
-    await expect(this.page).toHaveURL(`${process.env.BASE_URL}/brand_products/Polo`)
+Then('I should be on the {string} brand page with products displayed', async function (this: CustomWorld, brand: string) {
+    await expect(this.page).toHaveURL(`${process.env.BASE_URL}/brand_products/${brand}`)
     await expect(this.page.locator('h2.title')).toBeVisible()
-    await expect(this.page.locator('h2.title')).toHaveText('Brand - Polo Products')
-    await expect(this.page.locator('.product-image-wrapper').first()).toBeVisible()
-})
-
-When('I click on another brand from the sidebar', async function (this: CustomWorld) {
-    await this.page.locator('.brands_products ul li').nth(1).click()
-})
-
-Then('I should be on the new brand page with products displayed', async function (this: CustomWorld) {
-    await expect(this.page).toHaveURL(`${process.env.BASE_URL}/brand_products/H&M`)
-    await expect(this.page.locator('h2.title')).toBeVisible()
-    await expect(this.page.locator('h2.title')).toHaveText('Brand - H&M Products')
+    await expect(this.page.locator('h2.title')).toHaveText(`Brand - ${brand} Products`)
     await expect(this.page.locator('.product-image-wrapper').first()).toBeVisible()
 })
