@@ -10,6 +10,7 @@ End-to-end test automation suite for [automationexercise.com](https://automation
 |-------|-------|
 | UI Tests | Playwright + Cucumber.js (BDD) |
 | API Tests | Postman + Newman |
+| Performance Tests | Grafana k6 |
 | Language | TypeScript |
 | Architecture | Page Object Model |
 | Containerization | Docker + Docker Compose |
@@ -32,6 +33,9 @@ apps/
     collections/    # Postman collections
     environments/   # Environment configs
     reports/        # Newman reports (generated)
+  performance-tests/
+    tests/          # User flow
+    scenarios/      # Load / stress / spike / soak
 ```
 
 ## Getting Started
@@ -39,6 +43,7 @@ apps/
 ### Prerequisites
 - Node.js 18+
 - Docker (optional)
+- [k6](https://grafana.com/docs/k6/latest/set-up/install-k6/) (optional, for performance tests)
 
 ### Install dependencies
 ```bash
@@ -79,6 +84,27 @@ npm run test:ui-tracing
 ### API Tests
 ```bash
 npm run test:api
+```
+
+### Performance Tests
+
+Requires [k6](https://grafana.com/docs/k6/latest/set-up/install-k6/) installed locally. Run manually — not included in CI.
+
+```bash
+# smoke run (user flow, no load)
+npm run test:performance
+
+# load — 20 users, 3 minutes (normal traffic)
+k6 run apps/performance-tests/scenarios/load.ts
+
+# stress — ramp up to 150 users (find the breaking point)
+k6 run apps/performance-tests/scenarios/stress.ts
+
+# spike — sudden burst to 100 users
+k6 run apps/performance-tests/scenarios/spike.ts
+
+# soak — 20 users for 30 minutes (detect memory leaks)
+k6 run apps/performance-tests/scenarios/soak.ts
 ```
 
 ## Docker

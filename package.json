@@ -9,6 +9,7 @@
     "test:ui-tracing": "npx playwright show-trace",
     "setup:cookie": "ts-node apps/ui-tests/utils/cookieSetup.ts",
     "test:api": "newman run apps/api-tests/collections/api.collection.json --environment apps/api-tests/environments/prod.env.json --reporters cli,htmlextra --reporter-htmlextra-export apps/api-tests/reports/report.html",
+    "test:performance": "k6 run apps/performance-tests/tests/userFlow.ts",
     "docker:build": "docker compose build",
     "docker:test:ui": "docker compose run --rm ui-tests",
     "docker:test:api": "docker compose run --rm api-tests",
@@ -20,6 +21,7 @@
   "devDependencies": {
     "@cucumber/cucumber": "^12.7.0",
     "@playwright/test": "^1.58.2",
+    "@types/k6": "^1.7.0",
     "@types/node": "^25.5.0",
     "dotenv": "^17.3.1",
     "newman": "^6.2.2",
