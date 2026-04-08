@@ -11,5 +11,5 @@
     "types": ["@playwright/test", "node"]
   },
   "include": ["apps/**/*.ts"],
-  "exclude": ["node_modules"]
+  "exclude": ["node_modules", "apps/performance-tests"]
 }

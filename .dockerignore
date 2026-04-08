@@ -12,3 +12,4 @@ apps/ui-tests/reports
 apps/ui-tests/traces
 apps/ui-tests/fixtures/cookieState.json
 apps/api-tests/reports
+apps/performance-tests
